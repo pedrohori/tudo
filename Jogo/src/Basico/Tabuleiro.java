@@ -10,6 +10,7 @@ import pecas.Vazio;
 public class Tabuleiro implements ITabuleiro{
 	
 	int rodada=0;
+	public Recursos rec;
 	public Pecas tab[][];
 	public void criarTab(int a, int b) {//cria os objetos na matriz
         this.tab = new Pecas [a][b];
@@ -20,7 +21,8 @@ public class Tabuleiro implements ITabuleiro{
         }
 	}
 	
-	void fazerTab(int arvores, int pedras, int lagos) {
+	void fazerTab(int arvores, int pedras, int lagos, int r) {
+		this.rec = new Recursos(r);
 		Random randx = new Random();
 		Random randy = new Random();
 		int x;
@@ -59,12 +61,21 @@ public class Tabuleiro implements ITabuleiro{
 	}
 	
 	void executar() {
+		rodada = rodada +1;
 		for (int i=0; i<10; i++){
             for (int j=0; j<6; j++){
             	if (tab[j][i].nome != '-') {
-            		if (tab[j][i].tipo == "inimigas") {
-            			System.out.println("top");
+            		if (tab[j][i].tipo == "Inimigas") {
             			tab[j][i].mover(j, i);
+            		}
+            	}
+            }
+		}
+		for (int i=0; i<10; i++){
+            for (int j=0; j<6; j++){
+            	if (tab[j][i].nome != '-') {
+            		if (tab[j][i].tipo == "Aliadas") {
+            			tab[j][i].interagir(j, i);
             		}
             	}
             }
@@ -72,16 +83,14 @@ public class Tabuleiro implements ITabuleiro{
 	}
 	
 	void mostrarTab(){
+		System.out.println("Rodada: "+ rodada);
+		rec.mostrarRecursos();
 		for (int i=0; i<6; i++){
             for (int j=0; j<10; j++){
-            	if (tab[i][j].nome == '-') {
-            		System.out.print("- ");
-            	}
-            	else {
-            		tab[i][j].mostrar();
-            	}
+            	tab[i][j].mostrar();
             }
             System.out.println();
+            
 		}
 		System.out.println();
 	}

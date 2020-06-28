@@ -1,14 +1,16 @@
 package pecas;
 
 import Basico.Recursos;
+import Basico.Tabuleiro;
 
 public class Fabrica extends Aliadas {
 	
-	public Fabrica() {
+	public Fabrica(Tabuleiro tab) {
 		custo = 50;
 		vida = 3;
 		nome = 'f';
 		tipo = "Aliadas";
+		this.tabu = tab;
 		//dinheiro.alterarRecursos(0, custo);
 	}
 	
@@ -17,6 +19,6 @@ public class Fabrica extends Aliadas {
 	}
 
 	public void interagir(int posicaoX, int posicaoY) {
-		dinheiro.alterarRecursos(1, 10);
+		tabu.rec.alterarRecursos(1, 10);
 	}
 }

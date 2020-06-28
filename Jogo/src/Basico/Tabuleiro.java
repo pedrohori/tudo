@@ -10,6 +10,7 @@ import pecas.Vazio;
 public class Tabuleiro implements ITabuleiro{
 	
 	int rodada=0;
+	public int fim;
 	public Recursos rec;
 	public Pecas tab[][];
 	public void criarTab(int a, int b) {//cria os objetos na matriz
@@ -21,8 +22,9 @@ public class Tabuleiro implements ITabuleiro{
         }
 	}
 	
-	void fazerTab(int arvores, int pedras, int lagos, int r) {
+	void fazerTab(int arvores, int pedras, int lagos, int r, int tempo) {
 		this.rec = new Recursos(r);
+		this.fim = tempo;
 		Random randx = new Random();
 		Random randy = new Random();
 		int x;
@@ -83,7 +85,7 @@ public class Tabuleiro implements ITabuleiro{
 	}
 	
 	void mostrarTab(){
-		System.out.println("Rodada: "+ rodada);
+		System.out.println("Rodada: "+ rodada +"/" + fim);
 		rec.mostrarRecursos();
 		for (int i=0; i<6; i++){
             for (int j=0; j<10; j++){

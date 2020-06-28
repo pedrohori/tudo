@@ -14,9 +14,9 @@ public class Soldado extends Aliadas{
 		//dinheiro.alterarRecursos(0, custo);
 	}
 	
-	//public void setRecursos(Recursos r) {
-		//this.dinheiro = r;
-	//}
+	public void setRecursos(Recursos r) {
+		this.dinheiro = r;
+	}
 	
 	public void interagir(int posicaoX, int posicaoY) {
 		int i = 0;

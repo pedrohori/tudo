@@ -13,10 +13,6 @@ public class Soldado extends Aliadas{
 		this.tabu = tab;
 	}
 	
-	//public void setRecursos(Recursos r) {
-		//this.dinheiro = r;
-	//}
-	
 	public void interagir(int posicaoX, int posicaoY) {
 		int i = 0;
 		while((i + posicaoY + 1) < 10) {

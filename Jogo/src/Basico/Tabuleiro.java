@@ -9,6 +9,7 @@ import pecas.Vazio;
 
 public class Tabuleiro implements ITabuleiro{
 	
+	public boolean vitoria;
 	public int rodada=0;
 	public int fim;
 	public Recursos rec;
@@ -25,6 +26,7 @@ public class Tabuleiro implements ITabuleiro{
 	void fazerTab(int arvores, int pedras, int lagos, int r, int tempo) {
 		this.rec = new Recursos(r);
 		this.fim = tempo;
+		this.vitoria = true;
 		Random randx = new Random();
 		Random randy = new Random();
 		int x;

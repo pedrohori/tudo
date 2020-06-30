@@ -9,7 +9,7 @@ import pecas.Vazio;
 
 public class Tabuleiro implements ITabuleiro{
 	
-	int rodada=0;
+	public int rodada=0;
 	public int fim;
 	public Recursos rec;
 	public Pecas tab[][];

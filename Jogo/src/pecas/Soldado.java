@@ -1,6 +1,6 @@
 package pecas;
 
-import Basico.Recursos;
+//import Basico.Recursos;
 import Basico.Tabuleiro;
 
 public class Soldado extends Aliadas{
@@ -11,12 +11,11 @@ public class Soldado extends Aliadas{
 		nome = 's';
 		tipo = "Aliadas";
 		this.tabu = tab;
-		//dinheiro.alterarRecursos(0, custo);
 	}
 	
-	public void setRecursos(Recursos r) {
-		this.dinheiro = r;
-	}
+	//public void setRecursos(Recursos r) {
+		//this.dinheiro = r;
+	//}
 	
 	public void interagir(int posicaoX, int posicaoY) {
 		int i = 0;

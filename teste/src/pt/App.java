@@ -1,30 +1,32 @@
 package pt;
 
-import java.util.Random;
-
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class App {
 	public static String DIRETORIO1 =  App.class.getResource(".").getPath();
 	public static void main(String[] args) {
 		//agradecimento a Egoreurow1695 que disponibilizou a imagem utilizada como personagem no site gratispng
-	
-		Principal janela = new Principal();
+		Menu menu = new Menu();
 		
+		Icon bot = new ImageIcon("src//imagem//monstrinho.png");
+		JButton iniciar = new JButton(bot);
+		iniciar.setBounds(250, 250, 100, 100);
+		menu.adicionaComando(iniciar);
+		iniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+		Principal janela = new Principal();
 		janela.criarFundo(janela);
 		janela.addFundo();
-		
-		
-		
-		//int y = 0;
-		//int z = 0 ;
-				
 		
 		JButton cima = new JButton ("CIMA");
 		janela.adicionaComando(cima);
 		cima.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-            	janela.tab[janela.y][janela.z].cima();
+            	
+            		janela.tab[janela.y][janela.z].cima();
+            		janela.atualizarRecurso("cima");
             	
             }
         });
@@ -34,7 +36,9 @@ public class App {
 		janela.adicionaComando(baixo);
 		baixo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	
             	janela.tab[janela.y][janela.z].baixo();
+            	janela.atualizarRecurso("baixo");
             }
         });
 		
@@ -44,6 +48,7 @@ public class App {
 		esq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
             	janela.tab[janela.y][janela.z].esquerda();
+            	janela.atualizarRecurso("esquerda");
             }
         });
 		
@@ -53,6 +58,7 @@ public class App {
 		dir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
             	janela.tab[janela.y][janela.z].direita();
+            	janela.atualizarRecurso("direita");
             }
         });
         
@@ -62,8 +68,9 @@ public class App {
 		janela.adicionaComando(ale);
 		ale.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-            	
             	janela.tab[janela.y][janela.z].aleatorio();
+            }
+        });
             }
         });
 	}

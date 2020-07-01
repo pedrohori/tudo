@@ -19,81 +19,86 @@ public class Fundo extends JLabel {
 	public void cima() {
 		int l = p.tab[p.y][p.z].x;
     	p.removerPeca(p.tab[p.y][p.z].x);
-    	p.tab[p.y][p.z] = new Fundo("imagens\\cont.png",l,p);
+    	p.tab[p.y][p.z] = new Fundo("src\\imagem\\cont.png",l,p);
     	p.adicionaPeca(p.tab[p.y][p.z],l);
     	l = l - 6;
     	if(l>=0) {
     		p.y--;
     		p.removerPeca(l);
-    		p.tab[p.y][p.z]= new Fundo("imagens\\monstrinho.png",l,p);
+    		p.tab[p.y][p.z]= new Fundo("src\\imagem\\monstrinho.png",l,p);
     		p.adicionaPeca(p.tab[p.y][p.z],l);
     	}
     	else {
     		l = l + 6;
     		p.removerPeca(l);
-    		p.tab[p.y][p.z]= new Fundo("imagens\\monstrinho.png",l,p);
+    		p.tab[p.y][p.z]= new Fundo("src\\imagem\\monstrinho.png",l,p);
     		p.adicionaPeca(p.tab[p.y][p.z],l);
     	}
+    
 	}
 	
 	public void baixo() {
 		int l = p.tab[p.y][p.z].x;
     	p.removerPeca(p.tab[p.y][p.z].x);
-    	p.tab[p.y][p.z] = new Fundo("imagens\\cont.png",l,p);
+    	p.tab[p.y][p.z] = new Fundo("src\\imagem\\cont.png",l,p);
     	p.adicionaPeca(p.tab[p.y][p.z],l);
     	l = l +6;
     	if(l<=35) {
     		p.y++;
     		p.removerPeca(l);
-    		p.tab[p.y][p.z]= new Fundo("imagens\\monstrinho.png",l,p);
+    		p.tab[p.y][p.z]= new Fundo("src\\imagem\\monstrinho.png",l,p);
     		p.adicionaPeca(p.tab[p.y][p.z],l);
     	}
     	else {
     		l = l - 6;
     		p.removerPeca(l);
-    		p.tab[p.y][p.z]= new Fundo("imagens\\monstrinho.png",l,p);
+    		p.tab[p.y][p.z]= new Fundo("src\\imagem\\monstrinho.png",l,p);
     		p.adicionaPeca(p.tab[p.y][p.z],l);
     	}
+    	
 	}
 	
 	public void esquerda() {
 		int l = p.tab[p.y][p.z].x;
     	p.removerPeca(p.tab[p.y][p.z].x);
-    	p.tab[p.y][p.z] = new Fundo("imagens\\cont.png",l,p);
+    	p.tab[p.y][p.z] = new Fundo("src\\imagem\\cont.png",l,p);
     	p.adicionaPeca(p.tab[p.y][p.z],l);
     	l = l - 1;
     	if(p.z==0) {
     		l=l+1;
     		p.removerPeca(l);
-    		p.tab[p.y][p.z]= new Fundo("imagens\\monstrinho.png",l,p);
+    		p.tab[p.y][p.z]= new Fundo("src\\imagem\\monstrinho.png",l,p);
     		p.adicionaPeca(p.tab[p.y][p.z],l);
     	}
     	else {
     		p.z--;
     		p.removerPeca(l);
-    		p.tab[p.y][p.z]= new Fundo("imagens\\monstrinho.png",l,p);
+    		p.tab[p.y][p.z]= new Fundo("src\\imagem\\monstrinho.png",l,p);
     		p.adicionaPeca(p.tab[p.y][p.z],l);
     	}
+    	
+
 	}
 	
 	public void direita() {
 		int l = p.tab[p.y][p.z].x;
     	p.removerPeca(p.tab[p.y][p.z].x);
-    	p.tab[p.y][p.z] = new Fundo("imagens\\cont.png",l,p);
+    	p.tab[p.y][p.z] = new Fundo("src\\imagem\\cont.png",l,p);
     	p.adicionaPeca(p.tab[p.y][p.z],l);
     	l = l + 1;
     	if(p.z==5) {
     		l=l-1;
     		p.removerPeca(l);
-    		p.tab[p.y][p.z]= new Fundo("imagens\\monstrinho.png",l,p);
+    		p.tab[p.y][p.z]= new Fundo("src\\imagem\\monstrinho.png",l,p);
     		p.adicionaPeca(p.tab[p.y][p.z],l);
     	}
     	else {
     		p.z++;
     		p.removerPeca(l);
-    		p.tab[p.y][p.z]= new Fundo("imagens\\monstrinho.png",l,p);
+    		p.tab[p.y][p.z]= new Fundo("src\\imagem\\monstrinho.png",l,p);
     		p.adicionaPeca(p.tab[p.y][p.z],l);
     	}
+    	
     }
 	
 	public void aleatorio() {

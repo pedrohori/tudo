@@ -6,7 +6,6 @@ public class Monstro_Forte extends Inimigas {
 	
 	public Monstro_Forte(Tabuleiro tab) {
 		vida = 5;
-		velocidade = 1;
 		nome = 'M';
 		tipo = "Inimigas";
 		this.tabu = tab;
@@ -33,7 +32,9 @@ public class Monstro_Forte extends Inimigas {
 		if (tabu.tab[posicaoX][posicaoY-1].tipo == "Aliadas" || tabu.tab[posicaoX][posicaoY-1].nome == 'a') {
 			tabu.tab[posicaoX][posicaoY-1].vida = tabu.tab[posicaoX][posicaoY-1].vida -2;
 			if (tabu.tab[posicaoX][posicaoY-1].vida <= 0) {
-				tabu.tab[posicaoX][posicaoY-1] = new Vazio();
+				tabu.tab[posicaoX][posicaoY-1] = new Monstro_Forte(tabu);
+				tabu.tab[posicaoX][posicaoY-1].vida = tabu.tab[posicaoX][posicaoY].vida;
+				tabu.tab[posicaoX][posicaoY] = new Vazio();
 			}
 		}
 		else if (tabu.tab[posicaoX][posicaoY-1].nome == 'p') {
@@ -48,7 +49,9 @@ public class Monstro_Forte extends Inimigas {
 			else if (tabu.tab[posicaoX][posicaoY-2].tipo == "Aliadas" || tabu.tab[posicaoX][posicaoY-2].nome == 'a') {
 				tabu.tab[posicaoX][posicaoY-2].vida = tabu.tab[posicaoX][posicaoY-2].vida -2;
 				if (tabu.tab[posicaoX][posicaoY-2].vida <= 0) {
-					tabu.tab[posicaoX][posicaoY-2] = new Vazio();
+					tabu.tab[posicaoX][posicaoY-2] = new Monstro_Forte(tabu);
+					tabu.tab[posicaoX][posicaoY-2].vida = tabu.tab[posicaoX][posicaoY].vida;
+					tabu.tab[posicaoX][posicaoY] = new Vazio();
 				}
 			}
 		}
@@ -63,7 +66,9 @@ public class Monstro_Forte extends Inimigas {
 				else if (tabu.tab[posicaoX+1][posicaoY].tipo == "Aliadas" || tabu.tab[posicaoX+1][posicaoY].nome == 'a') {
 					tabu.tab[posicaoX+1][posicaoY].vida = tabu.tab[posicaoX+1][posicaoY].vida -2;
 					if (tabu.tab[posicaoX+1][posicaoY].vida == 0) {
-						tabu.tab[posicaoX+1][posicaoY] = new Vazio();
+						tabu.tab[posicaoX+1][posicaoY] = new Monstro_Forte(tabu);
+						tabu.tab[posicaoX+1][posicaoY].vida = tabu.tab[posicaoX][posicaoY].vida;
+						tabu.tab[posicaoX][posicaoY] = new Vazio();
 					}
 				}
 			}
@@ -76,7 +81,9 @@ public class Monstro_Forte extends Inimigas {
 				else if (tabu.tab[posicaoX-1][posicaoY].tipo == "Aliadas" || tabu.tab[posicaoX-1][posicaoY].nome == 'a') {
 					tabu.tab[posicaoX-1][posicaoY].vida = tabu.tab[posicaoX-1][posicaoY].vida -2;
 					if (tabu.tab[posicaoX-1][posicaoY].vida == 0) {
-						tabu.tab[posicaoX-1][posicaoY] = new Vazio();
+						tabu.tab[posicaoX-1][posicaoY] = new Monstro_Forte(tabu);
+						tabu.tab[posicaoX-1][posicaoY].vida = tabu.tab[posicaoX][posicaoY].vida;
+						tabu.tab[posicaoX][posicaoY] = new Vazio();
 					}
 				}
 			}

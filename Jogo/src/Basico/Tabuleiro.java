@@ -65,7 +65,9 @@ public class Tabuleiro implements ITabuleiro{
 	}
 	
 	void executar() {
-		rodada = rodada +1;
+		if (rodada < fim) {
+			rodada = rodada +1;
+		}
 		for (int i=0; i<10; i++){
             for (int j=0; j<6; j++){
             	if (tab[j][i].nome != '-') {
@@ -84,6 +86,18 @@ public class Tabuleiro implements ITabuleiro{
             	}
             }
 		}
+	}
+	
+	boolean procurarMonstro() {
+		boolean monstro = false;
+		for (int i=0; i<6; i++){
+            for (int j=0; j<10; j++){
+            	if (tab[i][j].tipo == "Inimigas") {
+            		monstro = true;
+            	}
+            }
+		}
+		return(monstro);
 	}
 	
 	void mostrarTab(){

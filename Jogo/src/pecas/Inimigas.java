@@ -3,7 +3,6 @@ package pecas;
 import Basico.Pecas;
 
 public abstract class Inimigas extends Pecas {
-	public int velocidade;
 	
 	public void mostrar(){
         System.out.print(nome+" ");

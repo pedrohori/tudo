@@ -7,8 +7,4 @@ public class Pedra extends Neutras{
 		nome = 'p';
 		tipo = "Neutras";
 	}
-
-	public void interagir(int posicaoX, int posicaoY) {
-
-	}
 }

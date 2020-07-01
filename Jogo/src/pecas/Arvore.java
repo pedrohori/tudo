@@ -7,8 +7,4 @@ public class Arvore extends Neutras{
 		nome = 'a';
 		tipo = "Neutras";
 	}
-
-	public void interagir(int posicaoX, int posicaoY) {
-
-	}
 }

@@ -11,5 +11,7 @@ public abstract class Neutras extends Pecas{
 		
 	}
 
-	public abstract void interagir(int posicaoX, int posicaoY);
+	public void interagir(int posicaoX, int posicaoY) {
+		
+	}
 }

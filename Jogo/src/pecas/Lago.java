@@ -7,8 +7,4 @@ public class Lago extends Neutras{
 		nome = 'l';
 		tipo = "Neutras";
 	}
-
-	public void interagir(int posicaoX, int posicaoY) {
-
-	}
 }

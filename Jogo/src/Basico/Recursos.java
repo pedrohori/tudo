@@ -5,7 +5,6 @@ public class Recursos implements IRecursos{
 
 	public Recursos(int x) {
 		this.dinheiro = x;
-		//dinheiro.alterarRecursos(0, custo);
 	}
 	
 	public void alterarRecursos(int operacao, int valor) {

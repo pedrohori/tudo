@@ -12,10 +12,6 @@ public class Fabrica extends Aliadas {
 		tipo = "Aliadas";
 		this.tabu = tab;
 	}
-	
-	//public void setRecursos(Recursos r) {
-		//this.dinheiro = r;
-	//}
 
 	public void interagir(int posicaoX, int posicaoY) {
 		tabu.rec.alterarRecursos(1, 10);

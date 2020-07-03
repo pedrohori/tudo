@@ -26,7 +26,7 @@ public class invasão {
 		
 		jogo1.criarTab(6, 10);
 		
-		jogo1.fazerTab(3, 0, 5, 300, 20);
+		jogo1.fazerTab(4, 3, 2, 300, 20);
 		
 		jogo1.mostrarTab();
 		Random rand = new Random();

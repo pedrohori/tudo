@@ -13,12 +13,12 @@ public class Soldado extends Aliadas{
 		this.tabu = tab;
 	}
 	
-	public void interagir(int posicaoX, int posicaoY) {
+	public void atirar(int posicaoX, int posicaoY, int dano){
 		int i = 0;
 		while((i + posicaoY + 1) < 10) {
 			if (tabu.tab[posicaoX][posicaoY+i+1].tipo == "Inimigas" || tabu.tab[posicaoX][posicaoY+i+1].nome == 'p') {
-				tabu.tab[posicaoX][posicaoY+i+1].vida = tabu.tab[posicaoX][posicaoY+i+1].vida - 1;
-				if (tabu.tab[posicaoX][posicaoY+i+1].vida == 0) {
+				tabu.tab[posicaoX][posicaoY+i+1].vida = tabu.tab[posicaoX][posicaoY+i+1].vida - dano;
+				if (tabu.tab[posicaoX][posicaoY+i+1].vida <= 0) {
 					tabu.tab[posicaoX][posicaoY+i+1] = new Vazio();
 				}
 				i = 9;
@@ -27,5 +27,9 @@ public class Soldado extends Aliadas{
 				i = i+1;
 			}
 		}
+	}
+	
+	public void interagir(int posicaoX, int posicaoY) {
+		atirar(posicaoX, posicaoY, 1);
 	}
 }

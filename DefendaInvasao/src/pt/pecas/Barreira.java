@@ -14,4 +14,6 @@ public class Barreira extends Aliadas{
 	
 	public void interagir(int posicaoX, int posicaoY) {
 	}
+
+	
 }

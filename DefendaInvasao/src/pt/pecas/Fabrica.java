@@ -1,6 +1,4 @@
 package pt.pecas;
-import javax.swing.ImageIcon;
-
 import pt.principal.*;
 public class Fabrica extends Aliadas {
 
@@ -22,4 +20,6 @@ public class Fabrica extends Aliadas {
 	public void interagir(int posicaoX, int posicaoY) {
 		tabu.rec.alterarRecursos(1, 10);
 	}
+
+	
 }

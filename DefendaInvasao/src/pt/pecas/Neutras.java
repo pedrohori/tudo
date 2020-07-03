@@ -18,4 +18,6 @@ public class Neutras extends Pecas {
 	public void interagir(int posicaoX, int posicaoY) {
 		
 	}
+
+
 }

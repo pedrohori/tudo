@@ -12,9 +12,13 @@ public class Monstro extends Inimigas{
 		this.tabu = tab;
 	}
 	
-	
+	public void entrar(int l, int posicaoY) {
+		tabu.removerPeca(l);
+		tabu.tab[posicaoY][9] = new Monstro(tabu,l);
+		tabu.adicionaPeca(tabu.tab[posicaoY][9],l);
+	}
 	public void mover(int posicaoX, int posicaoY) {
-		if (posicaoY == 0) {
+		/*if (posicaoY == 0) {
 			System.out.println("GAME OVER");
 			tabu.vitoria = false;
 		}
@@ -89,7 +93,14 @@ public class Monstro extends Inimigas{
 					}
 				}
 			}
-		}
+		}*/
+	}
+
+
+	@Override
+	public void interagir(int posicaoX, int posicaoY) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

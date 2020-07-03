@@ -1,6 +1,8 @@
 package pt.pecas;
 import pt.principal.*;
 public class Explosivo extends Aliadas {
+	
+	private static final long serialVersionUID = 1L;
 	int cronometro = 0;
 
 	public Explosivo (Tabuleiro tab,int z) {
@@ -13,7 +15,7 @@ public class Explosivo extends Aliadas {
 	}
 	
 	public void interagir(int posicaoX, int posicaoY) {
-		cronometro = cronometro+1;
+		/*cronometro = cronometro+1;
 		if(cronometro == 3) {
 			if(posicaoX == 0 && posicaoY == 0) {
 				if (tabu.tab[posicaoX+1][posicaoY].tipo == "Inimigas" || tabu.tab[posicaoX+1][posicaoY].nome == 'p') {
@@ -154,6 +156,8 @@ public class Explosivo extends Aliadas {
 				}
 			}
 			tabu.tab[posicaoX][posicaoY] = new Vazio();
-		}
+		}*/
 	}
+
+	
 }

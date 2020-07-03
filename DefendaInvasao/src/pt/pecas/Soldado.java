@@ -14,7 +14,7 @@ public class Soldado extends Aliadas {
 	}
 	
 	public void interagir(int posicaoX, int posicaoY) {
-		int i = 0;
+		/*int i = 0;
 		while((i + posicaoY + 1) < 10) {
 			if (tabu.tab[posicaoX][posicaoY+i+1].tipo == "Inimigas" || tabu.tab[posicaoX][posicaoY+i+1].nome == 'p') {
 				tabu.tab[posicaoX][posicaoY+i+1].vida = tabu.tab[posicaoX][posicaoY+i+1].vida - 1;
@@ -26,6 +26,8 @@ public class Soldado extends Aliadas {
 			else {
 				i = i+1;
 			}
-		}
+		}*/
 	}
+
+	
 }

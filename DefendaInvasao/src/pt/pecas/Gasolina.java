@@ -14,4 +14,6 @@ public class Gasolina  extends Aliadas{
 	
 	public void interagir(int posicaoX, int posicaoY) {
 	}
+
+	
 }

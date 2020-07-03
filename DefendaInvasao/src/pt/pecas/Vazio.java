@@ -6,7 +6,7 @@ public class Vazio extends Pecas {
 
 	private static final long serialVersionUID = 1L;
 	public Vazio(int z) {
-		super("src\\assets\\vazio.png", z);
+		super("src\\assets\\vaziov.png", z);
 		nome = '-';
 		tipo = "vazio";
 	}
@@ -19,4 +19,7 @@ public class Vazio extends Pecas {
 	public void interagir(int posicaoX, int posicaoY) {}
 
 	protected void mover(int posicaoX, int posicaoY) {}
+
+
+	
 }

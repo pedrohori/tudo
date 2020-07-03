@@ -7,7 +7,9 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.util.Random;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
@@ -16,10 +18,11 @@ public class Tabuleiro extends JFrame implements ITabuleiro {
 	private static final long serialVersionUID = 1L;
 	
 	private JPanel painelFundo, painelGrid, painelControle;
-	
+	private JLabel label1;
 	public boolean vitoria;
 	public int rodada=0;
 	public int fim;
+	public int posBot=0;
 	public Recursos rec;
 	public Pecas tab[][] = new Pecas [6][10];
 	
@@ -39,15 +42,18 @@ public class Tabuleiro extends JFrame implements ITabuleiro {
 		
 		painelFundo = new JPanel();
 		painelFundo.setLayout(new BorderLayout());
-		painelPrincipal.add(painelFundo, BorderLayout.CENTER);
+		painelFundo.setSize(1010,610);
+		painelPrincipal.add(painelFundo, BorderLayout.SOUTH);
 		
 		painelGrid = new JPanel();
-		painelGrid.setLayout(new GridLayout(10,6));
+		painelGrid.setLayout(new GridLayout(6,10));
 		painelFundo.add(painelGrid, BorderLayout.SOUTH);
 		
 		painelControle = new JPanel();
 		painelControle.setLayout(new FlowLayout());
-		painelPrincipal.add(painelControle, BorderLayout.EAST);
+		painelPrincipal.add(painelControle);
+		
+		
 		
 		setVisible(true);
 	}
@@ -61,8 +67,11 @@ public class Tabuleiro extends JFrame implements ITabuleiro {
         }
 	}
 	
-	void fazerTab(int arvores, int pedras, int lagos, int r, int tempo) {
+	public void fazerTab(int arvores, int pedras, int lagos, int r, int tempo) {
 		this.rec = new Recursos(r);
+		String s = Integer.toString(rec.dinheiro);
+		label1 = new JLabel("Recursos disponiveis: " + s);
+		painelControle.add(label1);
 		this.fim = tempo;
 		this.vitoria = true;
 		Random randx = new Random();
@@ -101,7 +110,20 @@ public class Tabuleiro extends JFrame implements ITabuleiro {
 			}
 		}
 	}
+	public void addFundo() {
+		for(int i=0; i<6;i++) {
+			for(int j=0; j<10;j++) {
+				//System.out.println(tab[i][j].x);
+				adicionaPeca(tab[i][j],tab[i][j].pos);
+			}
+		}
+	}
 	
+	public void entrar(int l, int posicaoY) {
+		removerPeca(l);
+		tab[posicaoY][9] = new Monstro(this,l);
+		adicionaPeca(tab[posicaoY][9],l);
+	}
 	public void adicionaPeca(Pecas img) {
 		painelGrid.add(img);
 		SwingUtilities.updateComponentTreeUI(this);
@@ -117,4 +139,13 @@ public class Tabuleiro extends JFrame implements ITabuleiro {
 	        painelGrid.remove(posicao);
 	        SwingUtilities.updateComponentTreeUI(this);
 	 }
+	 public void adicionaComando (JButton comando) {
+	
+			 painelControle.add(comando);
+			 SwingUtilities.updateComponentTreeUI(this);
+			 
+		
+			
+			
+		}
 }

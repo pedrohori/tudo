@@ -1,6 +1,9 @@
 package pt.pecas;
 import pt.principal.*;
 public class Tanque extends Aliadas{
+	
+	private static final long serialVersionUID = 1L;
+
 	public Tanque(Tabuleiro tab,int z) {
 		super("src\\assets\\tanque.png",z);
 		custo = 200;
@@ -11,7 +14,7 @@ public class Tanque extends Aliadas{
 	}
 
 	public void interagir(int posicaoX, int posicaoY) {
-		int i = 0;
+		/*int i = 0;
 		if(posicaoX == 0 && posicaoY == 0) {
 			if (tabu.tab[posicaoX][posicaoY+1].nome == 'g' || tabu.tab[posicaoX+1][posicaoY].nome == 'g' ) {
 				while((i + posicaoY + 1) < 10) {
@@ -153,6 +156,8 @@ public class Tanque extends Aliadas{
 					i = i+1;
 				}
 			}
-		}
+		}*/
 	}
+
+	
 }

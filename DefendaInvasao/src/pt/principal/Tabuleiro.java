@@ -18,14 +18,14 @@ public class Tabuleiro extends JFrame implements ITabuleiro {
 	private static final long serialVersionUID = 1L;
 	
 	private JPanel painelFundo, painelGrid, painelControle;
-	private JLabel label1;
+	public JLabel label1;
 	public boolean vitoria;
 	public int rodada=0;
 	public int fim;
 	public int posBot=0;
 	public Recursos rec;
 	public Pecas tab[][] = new Pecas [6][10];
-	
+	public int x,y;
 
 	public Tabuleiro(String s) {
 		super("Defenda-se da Invasão - "+ s);
@@ -68,7 +68,7 @@ public class Tabuleiro extends JFrame implements ITabuleiro {
 	}
 	
 	public void fazerTab(int arvores, int pedras, int lagos, int r, int tempo) {
-		this.rec = new Recursos(r);
+		this.rec = new Recursos(r,this);
 		String s = Integer.toString(rec.dinheiro);
 		label1 = new JLabel("Recursos disponiveis: " + s);
 		painelControle.add(label1);
@@ -119,16 +119,63 @@ public class Tabuleiro extends JFrame implements ITabuleiro {
 		}
 	}
 	
-	public void entrar(int l, int posicaoY) {
+	public void entrar(int l, int posicaoY,char t) {
+		
 		removerPeca(l);
-		tab[posicaoY][9] = new Monstro(this,l);
-		adicionaPeca(tab[posicaoY][9],l);
+		if(t=='m') {
+			tab[posicaoY][9] = new Monstro(this,l);
+			adicionaPeca(tab[posicaoY][9],l);
+		}
+		else {
+			tab[posicaoY][9] = new MonstroRapido(this,l);
+			adicionaPeca(tab[posicaoY][9],l);
+		}
 	}
-	public void adicionaPeca(Pecas img) {
+	
+	public void executar() {
+	
+		if (rodada < fim) {
+			rodada = rodada +1;
+		
+			for (int i=0; i<6; i++){
+				for (int j=0; j<10; j++){
+					if (tab[i][j].nome != '-') {
+						if (tab[i][j].tipo == "Inimigas") {
+							tab[i][j].mover(j, i);
+						}
+						
+					}
+				}
+			}
+		}
+		for (int i=0; i<6; i++){
+			for (int j=0; j<10; j++){
+				if (tab[i][j].nome != '-') {
+					if (tab[i][j].tipo == "Aliadas") {
+						tab[i][j].interagir(j, i);
+					}
+				}
+			}
+		}
+		
+	}
+	
+	public boolean procurarMonstro() {
+		boolean monstro = false;
+		for (int i=0; i<6; i++){
+            for (int j=0; j<10; j++){
+            	if (tab[i][j].tipo == "Inimigas") {
+            		monstro = true;
+            	}
+            }
+		}
+		return(monstro);
+	}
+	/*public void adicionaPeca(Pecas img) {
 		painelGrid.add(img);
 		SwingUtilities.updateComponentTreeUI(this);
 	    
-	}
+	}*/
 	public void adicionaPeca(Pecas img, int posicao) {
 		painelGrid.add(img,posicao);
 		SwingUtilities.updateComponentTreeUI(this);
@@ -143,9 +190,5 @@ public class Tabuleiro extends JFrame implements ITabuleiro {
 	
 			 painelControle.add(comando);
 			 SwingUtilities.updateComponentTreeUI(this);
-			 
-		
-			
-			
 		}
 }

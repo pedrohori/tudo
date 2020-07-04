@@ -12,8 +12,7 @@ public class Barreira extends Aliadas{
 		this.tabu = tab;
 	}
 	
-	public void interagir(int posicaoX, int posicaoY) {
-	}
+	public void interagir(int posicaoX, int posicaoY) {}
 
 	
 }

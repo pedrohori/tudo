@@ -1,12 +1,11 @@
 package pt.principal;
 
-import javax.swing.JLabel;
-
 public class Recursos implements IRecursos{
 	public int dinheiro;
-	public JLabel valor;
-	public Recursos(int x) {
+	Tabuleiro tab;
+	public Recursos(int x,Tabuleiro tab) {
 		this.dinheiro = x;
+		this.tab=tab;
 		//dinheiro.alterarRecursos(0, custo);
 	}
 	
@@ -18,12 +17,13 @@ public class Recursos implements IRecursos{
 		if (operacao == 0) {
 			dinheiro = dinheiro - valor;
 		}
+		mostrarRecursos();
 	}
 
 	public void mostrarRecursos() {
-	     //System.out.println("Dinheiro disponível: " + dinheiro +" ");
+	     
 		String s =Integer.toString(dinheiro);
-		valor.setText("Dinheiro disponivel: " + s);
-		valor.updateUI();
+		tab.label1.setText("Recursos disponivel: " + s);
+		tab.label1.updateUI();
 	}
 }

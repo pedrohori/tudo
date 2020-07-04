@@ -1,14 +1,7 @@
 package pt.principal;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Container;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-//import java.awt.FlowLayout;
-//import java.awt.GridLayout;
-import java.awt.Image;
-
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -24,7 +17,6 @@ public class Menu extends JFrame{
 	
 	private static final long serialVersionUID = 1L;
 	private JPanel centro;
-	private Fundo painelFundo;
 	public JButton fase1,fase2,fase3;
 	public Menu() {
 		
@@ -43,7 +35,7 @@ public class Menu extends JFrame{
 		painelPrincipal.setLayout(new BorderLayout());
 		
 	
-		centro = new Fundo();
+		centro = new Fundo("menu");
 		centro.setLayout(null);
 		
 		
@@ -53,17 +45,17 @@ public class Menu extends JFrame{
 		Icon bot = new ImageIcon("src//assets//bfase1.png");
 		fase1 = new JButton(bot);
 		fase1.setBounds(200, 300, 150, 75);
-		/*menu.*/adicionaComando(fase1);
+		adicionaComando(fase1);
 		
 		Icon bot1 = new ImageIcon("src//assets//bfase2.png");
 		fase2 = new JButton(bot1);
 		fase2.setBounds(450, 300, 150, 75);
-		/*menu.*/adicionaComando(fase2);
+		adicionaComando(fase2);
 		
 		Icon bot2 = new ImageIcon("src//assets//bfase3.png");
 		fase3 = new JButton(bot2);
 		fase3.setBounds(700, 300, 150, 75);
-		/*menu.*/adicionaComando(fase3);
+		adicionaComando(fase3);
 		
 		setVisible(true);
 			

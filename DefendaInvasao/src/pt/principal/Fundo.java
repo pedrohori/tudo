@@ -1,7 +1,7 @@
 package pt.principal;
 
 import java.awt.Graphics;
-import java.awt.Graphics2D;
+
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
@@ -12,9 +12,22 @@ public class Fundo extends JPanel {
 	
 	private static final long serialVersionUID = 1L;
 	private Image fundo;
+	ImageIcon ref;
 	
-	public Fundo() {
-		ImageIcon ref = new ImageIcon("src\\assets\\fundoMenu.png");
+	public Fundo(String s) {
+		if(s.equalsIgnoreCase("menu")) {
+			ref = new ImageIcon("src\\assets\\fundoMenu.png");
+		}
+		else if(s.equalsIgnoreCase("gameover")) {
+			ref = new ImageIcon("src\\assets\\gameover.png");
+		}
+		else if(s.equalsIgnoreCase("fase2")) {
+			ref = new ImageIcon("src\\assets\\vafase2.png");
+		}
+		else if(s.equalsIgnoreCase("fase3")) {
+			ref = new ImageIcon("src\\assets\\vafase3.png");
+		}
+	
 		fundo = ref.getImage();
 	}
 	

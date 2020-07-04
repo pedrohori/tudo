@@ -7,7 +7,7 @@ public class Explosivo extends Aliadas {
 
 	public Explosivo (Tabuleiro tab,int z) {
 		super("src\\assets\\bomba.png",z);
-		custo = 50;
+		custo = 200;
 		vida = 1;
 		nome = 'e';
 		tipo = "Aliadas";
@@ -15,148 +15,230 @@ public class Explosivo extends Aliadas {
 	}
 	
 	public void interagir(int posicaoX, int posicaoY) {
-		/*cronometro = cronometro+1;
+		cronometro = cronometro+1;
 		if(cronometro == 3) {
 			if(posicaoX == 0 && posicaoY == 0) {
-				if (tabu.tab[posicaoX+1][posicaoY].tipo == "Inimigas" || tabu.tab[posicaoX+1][posicaoY].nome == 'p') {
-					tabu.tab[posicaoX+1][posicaoY] = new Vazio();
+				if (tabu.tab[posicaoY][posicaoX+1].tipo == "Inimigas" || tabu.tab[posicaoX+1][posicaoY].nome == 'p') {
+					tabu.tab[posicaoY][posicaoX+1] = new Vazio(tabu.tab[posicaoY][posicaoX+1].pos);
+					tabu.removerPeca(tabu.tab[posicaoY][posicaoX+1].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY][posicaoX+1],tabu.tab[posicaoY][posicaoX+1].pos);
 				}
-				if (tabu.tab[posicaoX+1][posicaoY+1].tipo == "Inimigas" || tabu.tab[posicaoX+1][posicaoY+1].nome == 'p') {
-					tabu.tab[posicaoX+1][posicaoY+1] = new Vazio();
+				if (tabu.tab[posicaoY+1][posicaoX+1].tipo == "Inimigas" || tabu.tab[posicaoY+1][posicaoX+1].nome == 'p') {
+					tabu.tab[posicaoY+1][posicaoX+1] = new Vazio(tabu.tab[posicaoY+1][posicaoX+1].pos);
+					tabu.removerPeca(tabu.tab[posicaoY+1][posicaoX+1].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY+1][posicaoX+1],tabu.tab[posicaoY+1][posicaoX+1].pos);
 				}
-				if (tabu.tab[posicaoX][posicaoY+1].tipo == "Inimigas" || tabu.tab[posicaoX][posicaoY+1].nome == 'p') {
-					tabu.tab[posicaoX][posicaoY+1] = new Vazio();
-				}
-			}
-			else if(posicaoX == 0 && posicaoY == 9) {
-				if (tabu.tab[posicaoX+1][posicaoY].tipo == "Inimigas" || tabu.tab[posicaoX+1][posicaoY].nome == 'p') {
-					tabu.tab[posicaoX+1][posicaoY] = new Vazio();
-				}
-				if (tabu.tab[posicaoX+1][posicaoY-1].tipo == "Inimigas" || tabu.tab[posicaoX+1][posicaoY-1].nome == 'p') {
-					tabu.tab[posicaoX+1][posicaoY-1] = new Vazio();
-				}
-				if (tabu.tab[posicaoX][posicaoY-1].tipo == "Inimigas" || tabu.tab[posicaoX][posicaoY-1].nome == 'p') {
-					tabu.tab[posicaoX][posicaoY-1] = new Vazio();
+				if (tabu.tab[posicaoY+1][posicaoX].tipo == "Inimigas" || tabu.tab[posicaoY+1][posicaoX].nome == 'p') {
+					tabu.tab[posicaoY+1][posicaoX] = new Vazio(tabu.tab[posicaoY+1][posicaoX].pos);
+					tabu.removerPeca(tabu.tab[posicaoY+1][posicaoX].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY+1][posicaoX],tabu.tab[posicaoY+1][posicaoX].pos);
 				}
 			}
-			else if(posicaoX == 5 && posicaoY == 0) {
-				if (tabu.tab[posicaoX-1][posicaoY].tipo == "Inimigas" || tabu.tab[posicaoX-1][posicaoY].nome == 'p') {
-					tabu.tab[posicaoX-1][posicaoY] = new Vazio();
+			else if(posicaoY == 0 && posicaoX == 9) {
+				if (tabu.tab[posicaoY+1][posicaoX].tipo == "Inimigas" || tabu.tab[posicaoY+1][posicaoX].nome == 'p') {
+					tabu.tab[posicaoY+1][posicaoX] = new Vazio(tabu.tab[posicaoY+1][posicaoX].pos);
+					tabu.removerPeca(tabu.tab[posicaoY+1][posicaoX].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY+1][posicaoX],tabu.tab[posicaoY+1][posicaoX].pos);
 				}
-				if (tabu.tab[posicaoX-1][posicaoY+1].tipo == "Inimigas" || tabu.tab[posicaoX-1][posicaoY+1].nome == 'p') {
-					tabu.tab[posicaoX-1][posicaoY+1] = new Vazio();
+				if (tabu.tab[posicaoY+1][posicaoX-1].tipo == "Inimigas" || tabu.tab[posicaoY+1][posicaoX-1].nome == 'p') {
+					tabu.tab[posicaoY+1][posicaoX-1] = new Vazio(tabu.tab[posicaoY+1][posicaoX-1].pos);
+					tabu.removerPeca(tabu.tab[posicaoY+1][posicaoX-1].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY+1][posicaoX-1],tabu.tab[posicaoY+1][posicaoX-1].pos);
 				}
-				if (tabu.tab[posicaoX][posicaoY+1].tipo == "Inimigas" || tabu.tab[posicaoX][posicaoY+1].nome == 'p') {
-					tabu.tab[posicaoX][posicaoY+1] = new Vazio();
-				}
-			}
-			else if(posicaoX == 5 && posicaoY == 9) {
-				if (tabu.tab[posicaoX-1][posicaoY].tipo == "Inimigas" || tabu.tab[posicaoX-1][posicaoY].nome == 'p') {
-					tabu.tab[posicaoX-1][posicaoY] = new Vazio();
-				}
-				if (tabu.tab[posicaoX-1][posicaoY-1].tipo == "Inimigas" || tabu.tab[posicaoX-1][posicaoY-1].nome == 'p') {
-					tabu.tab[posicaoX-1][posicaoY-1] = new Vazio();
-				}
-				if (tabu.tab[posicaoX][posicaoY-1].tipo == "Inimigas" || tabu.tab[posicaoX][posicaoY-1].nome == 'p') {
-					tabu.tab[posicaoX][posicaoY-1] = new Vazio();
+				if (tabu.tab[posicaoY][posicaoX-1].tipo == "Inimigas" || tabu.tab[posicaoY][posicaoX-1].nome == 'p') {
+					tabu.tab[posicaoY][posicaoX-1] = new Vazio(tabu.tab[posicaoY][posicaoX-1].pos);
+					tabu.removerPeca(tabu.tab[posicaoY][posicaoX-1].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY][posicaoX-1],tabu.tab[posicaoY][posicaoX-1].pos);
 				}
 			}
-			else if(posicaoX == 0) {
-				if (tabu.tab[posicaoX+1][posicaoY].tipo == "Inimigas" || tabu.tab[posicaoX+1][posicaoY].nome == 'p') {
-					tabu.tab[posicaoX+1][posicaoY] = new Vazio();
+			else if(posicaoY == 5 && posicaoX == 0) {
+				if (tabu.tab[posicaoY-1][posicaoX].tipo == "Inimigas" || tabu.tab[posicaoY-1][posicaoX].nome == 'p') {
+					tabu.tab[posicaoY-1][posicaoX] = new Vazio(tabu.tab[posicaoY-1][posicaoX].pos);
+					tabu.removerPeca(tabu.tab[posicaoY-1][posicaoX].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY-1][posicaoX],tabu.tab[posicaoY-1][posicaoX].pos);
 				}
-				if (tabu.tab[posicaoX+1][posicaoY+1].tipo == "Inimigas" || tabu.tab[posicaoX+1][posicaoY+1].nome == 'p') {
-					tabu.tab[posicaoX+1][posicaoY+1] = new Vazio();
+				if (tabu.tab[posicaoY-1][posicaoX+1].tipo == "Inimigas" || tabu.tab[posicaoY-1][posicaoX+1].nome == 'p') {
+					tabu.tab[posicaoY-1][posicaoX+1] = new Vazio(tabu.tab[posicaoY-1][posicaoX+1].pos);
+					tabu.removerPeca(tabu.tab[posicaoY-1][posicaoX+1].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY-1][posicaoX+1],tabu.tab[posicaoY-1][posicaoX+1].pos);
 				}
-				if (tabu.tab[posicaoX+1][posicaoY-1].tipo == "Inimigas" || tabu.tab[posicaoX+1][posicaoY-1].nome == 'p') {
-					tabu.tab[posicaoX+1][posicaoY-1] = new Vazio();
-				}
-				if (tabu.tab[posicaoX][posicaoY-1].tipo == "Inimigas" || tabu.tab[posicaoX][posicaoY-1].nome == 'p') {
-					tabu.tab[posicaoX][posicaoY-1] = new Vazio();
-				}
-				if (tabu.tab[posicaoX][posicaoY+1].tipo == "Inimigas" || tabu.tab[posicaoX][posicaoY+1].nome == 'p') {
-					tabu.tab[posicaoX][posicaoY+1] = new Vazio();
+				if (tabu.tab[posicaoY][posicaoX+1].tipo == "Inimigas" || tabu.tab[posicaoY][posicaoX+1].nome == 'p') {
+					tabu.tab[posicaoY][posicaoX+1] = new Vazio(tabu.tab[posicaoY][posicaoX+1].pos);
+					tabu.removerPeca(tabu.tab[posicaoY][posicaoX+1].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY][posicaoX+1],tabu.tab[posicaoY][posicaoX+1].pos);
 				}
 			}
-			else if(posicaoX == 5) {
-				if (tabu.tab[posicaoX-1][posicaoY].tipo == "Inimigas" || tabu.tab[posicaoX-1][posicaoY].nome == 'p') {
-					tabu.tab[posicaoX-1][posicaoY] = new Vazio();
+			else if(posicaoX == 9 && posicaoY == 5) {
+				if (tabu.tab[posicaoY-1][posicaoX].tipo == "Inimigas" || tabu.tab[posicaoY-1][posicaoX].nome == 'p') {
+					tabu.tab[posicaoY-1][posicaoX] = new Vazio(tabu.tab[posicaoY-1][posicaoX].pos);
+					tabu.removerPeca(tabu.tab[posicaoY-1][posicaoX].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY-1][posicaoX],tabu.tab[posicaoY-1][posicaoX].pos);
 				}
-				if (tabu.tab[posicaoX-1][posicaoY+1].tipo == "Inimigas" || tabu.tab[posicaoX-1][posicaoY+1].nome == 'p') {
-					tabu.tab[posicaoX-1][posicaoY+1] = new Vazio();
+				if (tabu.tab[posicaoY-1][posicaoX-1].tipo == "Inimigas" || tabu.tab[posicaoY-1][posicaoX-1].nome == 'p') {
+					tabu.tab[posicaoY-1][posicaoX-1] = new Vazio(tabu.tab[posicaoY-1][posicaoX-1].pos);
+					tabu.removerPeca(tabu.tab[posicaoY-1][posicaoX-1].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY-1][posicaoX-1],tabu.tab[posicaoY-1][posicaoX-1].pos);
 				}
-				if (tabu.tab[posicaoX-1][posicaoY-1].tipo == "Inimigas" || tabu.tab[posicaoX-1][posicaoY-1].nome == 'p') {
-					tabu.tab[posicaoX-1][posicaoY-1] = new Vazio();
-				}
-				if (tabu.tab[posicaoX][posicaoY-1].tipo == "Inimigas" || tabu.tab[posicaoX][posicaoY-1].nome == 'p') {
-					tabu.tab[posicaoX][posicaoY-1] = new Vazio();
-				}
-				if (tabu.tab[posicaoX][posicaoY+1].tipo == "Inimigas" || tabu.tab[posicaoX][posicaoY+1].nome == 'p') {
-					tabu.tab[posicaoX][posicaoY+1] = new Vazio();
+				if (tabu.tab[posicaoY][posicaoX-1].tipo == "Inimigas" || tabu.tab[posicaoX][posicaoY-1].nome == 'p') {
+					tabu.tab[posicaoY][posicaoX-1] = new Vazio(tabu.tab[posicaoY][posicaoX-1].pos);
+					tabu.removerPeca(tabu.tab[posicaoY][posicaoX-1].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY][posicaoX-1],tabu.tab[posicaoY][posicaoX-1].pos);
 				}
 			}
 			else if(posicaoY == 0) {
-				if (tabu.tab[posicaoX+1][posicaoY+1].tipo == "Inimigas" || tabu.tab[posicaoX+1][posicaoY+1].nome == 'p') {
-					tabu.tab[posicaoX+1][posicaoY+1] = new Vazio();
+				if (tabu.tab[posicaoY+1][posicaoX].tipo == "Inimigas" || tabu.tab[posicaoY+1][posicaoX].nome == 'p') {
+					tabu.tab[posicaoY+1][posicaoX] = new Vazio(tabu.tab[posicaoY+1][posicaoX].pos);
+					tabu.removerPeca(tabu.tab[posicaoY+1][posicaoX].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY-1][posicaoX],tabu.tab[posicaoY-1][posicaoX-1].pos);
 				}
-				if (tabu.tab[posicaoX+1][posicaoY].tipo == "Inimigas" || tabu.tab[posicaoX+1][posicaoY].nome == 'p') {
-					tabu.tab[posicaoX+1][posicaoY] = new Vazio();
+				if (tabu.tab[posicaoY+1][posicaoX+1].tipo == "Inimigas" || tabu.tab[posicaoY+1][posicaoX+1].nome == 'p') {
+					tabu.tab[posicaoY+1][posicaoX+1] = new Vazio(tabu.tab[posicaoY+1][posicaoX+1].pos);
+					tabu.removerPeca(tabu.tab[posicaoY+1][posicaoX+1].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY+1][posicaoX+1],tabu.tab[posicaoY+1][posicaoX+1].pos);
 				}
-				if (tabu.tab[posicaoX-1][posicaoY].tipo == "Inimigas" || tabu.tab[posicaoX-1][posicaoY].nome == 'p') {
-					tabu.tab[posicaoX-1][posicaoY] = new Vazio();
+				if (tabu.tab[posicaoY+1][posicaoX-1].tipo == "Inimigas" || tabu.tab[posicaoY+1][posicaoX-1].nome == 'p') {
+					tabu.tab[posicaoY+1][posicaoX-1] = new Vazio(tabu.tab[posicaoY+1][posicaoX-1].pos);
+					tabu.removerPeca(tabu.tab[posicaoY+1][posicaoX-1].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY+1][posicaoX-1],tabu.tab[posicaoY+1][posicaoX-1].pos);
 				}
-				if (tabu.tab[posicaoX-1][posicaoY+1].tipo == "Inimigas" || tabu.tab[posicaoX-1][posicaoY+1].nome == 'p') {
-					tabu.tab[posicaoX-1][posicaoY+1] = new Vazio();
+				if (tabu.tab[posicaoY][posicaoX-1].tipo == "Inimigas" || tabu.tab[posicaoY][posicaoX-1].nome == 'p') {
+					tabu.tab[posicaoY][posicaoX-1] = new Vazio(tabu.tab[posicaoY][posicaoX-1].pos);
+					tabu.removerPeca(tabu.tab[posicaoY][posicaoX-1].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY][posicaoX-1],tabu.tab[posicaoY][posicaoX-1].pos);
 				}
-				if (tabu.tab[posicaoX][posicaoY+1].tipo == "Inimigas" || tabu.tab[posicaoX][posicaoY+1].nome == 'p') {
-					tabu.tab[posicaoX][posicaoY+1] = new Vazio();
+				if (tabu.tab[posicaoY][posicaoX+1].tipo == "Inimigas" || tabu.tab[posicaoY][posicaoX+1].nome == 'p') {
+					tabu.tab[posicaoY][posicaoX+1] = new Vazio(tabu.tab[posicaoY][posicaoX+1].pos);
+					tabu.removerPeca(tabu.tab[posicaoY][posicaoX+1].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY][posicaoX+1],tabu.tab[posicaoY][posicaoX+1].pos);
 				}
 			}
-			else if(posicaoY == 9) {
-				if (tabu.tab[posicaoX+1][posicaoY-1].tipo == "Inimigas" || tabu.tab[posicaoX+1][posicaoY-1].nome == 'p') {
-					tabu.tab[posicaoX+1][posicaoY-1] = new Vazio();
+			else if(posicaoY == 5) {
+				if (tabu.tab[posicaoY-1][posicaoX].tipo == "Inimigas" || tabu.tab[posicaoY-1][posicaoX].nome == 'p') {
+					tabu.tab[posicaoY-1][posicaoX] = new Vazio(tabu.tab[posicaoY-1][posicaoX].pos);
+					tabu.removerPeca(tabu.tab[posicaoY-1][posicaoX].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY-1][posicaoX],tabu.tab[posicaoY-1][posicaoX].pos);
 				}
-				if (tabu.tab[posicaoX+1][posicaoY].tipo == "Inimigas" || tabu.tab[posicaoX+1][posicaoY].nome == 'p') {
-					tabu.tab[posicaoX+1][posicaoY] = new Vazio();
+				if (tabu.tab[posicaoY-1][posicaoX+1].tipo == "Inimigas" || tabu.tab[posicaoY-1][posicaoX+1].nome == 'p') {
+					tabu.tab[posicaoY-1][posicaoX+1] = new Vazio(tabu.tab[posicaoY-1][posicaoX+1].pos);
+					tabu.removerPeca(tabu.tab[posicaoY-1][posicaoX+1].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY-1][posicaoX+1],tabu.tab[posicaoY-1][posicaoX+1].pos);
 				}
-				if (tabu.tab[posicaoX-1][posicaoY].tipo == "Inimigas" || tabu.tab[posicaoX-1][posicaoY].nome == 'p') {
-					tabu.tab[posicaoX-1][posicaoY] = new Vazio();
+				if (tabu.tab[posicaoY-1][posicaoX-1].tipo == "Inimigas" || tabu.tab[posicaoY-1][posicaoX-1].nome == 'p') {
+					tabu.tab[posicaoY-1][posicaoX-1] = new Vazio(tabu.tab[posicaoY-1][posicaoX-1].pos);
+					tabu.removerPeca(tabu.tab[posicaoY-1][posicaoX-1].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY-1][posicaoX-1],tabu.tab[posicaoY-1][posicaoX-1].pos);
 				}
-				if (tabu.tab[posicaoX-1][posicaoY-1].tipo == "Inimigas" || tabu.tab[posicaoX-1][posicaoY-1].nome == 'p') {
-					tabu.tab[posicaoX-1][posicaoY-1] = new Vazio();
+				if (tabu.tab[posicaoY][posicaoX-1].tipo == "Inimigas" || tabu.tab[posicaoY][posicaoX-1].nome == 'p') {
+					tabu.tab[posicaoY][posicaoX-1] = new Vazio(tabu.tab[posicaoY][posicaoX-1].pos);
+					tabu.removerPeca(tabu.tab[posicaoY][posicaoX-1].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY][posicaoX-1],tabu.tab[posicaoY][posicaoX-1].pos);
 				}
-				if (tabu.tab[posicaoX][posicaoY-1].tipo == "Inimigas" || tabu.tab[posicaoX][posicaoY-1].nome == 'p') {
-					tabu.tab[posicaoX][posicaoY-1] = new Vazio();
+				if (tabu.tab[posicaoY][posicaoX+1].tipo == "Inimigas" || tabu.tab[posicaoY][posicaoX+1].nome == 'p') {
+					tabu.tab[posicaoY][posicaoX+1] = new Vazio(tabu.tab[posicaoY][posicaoX+1].pos);
+					tabu.removerPeca(tabu.tab[posicaoY][posicaoX+1].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY][posicaoX+1],tabu.tab[posicaoY][posicaoX+1].pos);
+				}
+			}
+			else if(posicaoX == 0) {
+				if (tabu.tab[posicaoY+1][posicaoX+1].tipo == "Inimigas" || tabu.tab[posicaoY+1][posicaoX+1].nome == 'p') {
+					tabu.tab[posicaoY+1][posicaoX+1] = new Vazio(tabu.tab[posicaoY+1][posicaoX+1].pos);
+					tabu.removerPeca(tabu.tab[posicaoY+1][posicaoX+1].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY+1][posicaoX+1],tabu.tab[posicaoY+1][posicaoX+1].pos);
+				}
+				if (tabu.tab[posicaoY+1][posicaoX].tipo == "Inimigas" || tabu.tab[posicaoY+1][posicaoX].nome == 'p') {
+					tabu.tab[posicaoY+1][posicaoX] = new Vazio(tabu.tab[posicaoY+1][posicaoX].pos);
+					tabu.removerPeca(tabu.tab[posicaoY+1][posicaoX].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY+1][posicaoX],tabu.tab[posicaoY+1][posicaoX].pos);
+				}
+				if (tabu.tab[posicaoY-1][posicaoX].tipo == "Inimigas" || tabu.tab[posicaoY-1][posicaoX].nome == 'p') {
+					tabu.tab[posicaoY-1][posicaoX] = new Vazio(tabu.tab[posicaoY-1][posicaoX].pos);
+					tabu.removerPeca(tabu.tab[posicaoY-1][posicaoX].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY-1][posicaoX],tabu.tab[posicaoY-1][posicaoX].pos);
+				}
+				if (tabu.tab[posicaoY-1][posicaoX+1].tipo == "Inimigas" || tabu.tab[posicaoY-1][posicaoX+1].nome == 'p') {
+					tabu.tab[posicaoY-1][posicaoX+1] = new Vazio(tabu.tab[posicaoY-1][posicaoX+1].pos);
+					tabu.removerPeca(tabu.tab[posicaoY-1][posicaoX+1].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY-1][posicaoX+1],tabu.tab[posicaoY-1][posicaoX+1].pos);
+				}
+				if (tabu.tab[posicaoY][posicaoX+1].tipo == "Inimigas" || tabu.tab[posicaoY][posicaoX+1].nome == 'p') {
+					tabu.tab[posicaoY][posicaoX+1] = new Vazio(tabu.tab[posicaoY][posicaoX+1].pos);
+					tabu.removerPeca(tabu.tab[posicaoY][posicaoX+1].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY][posicaoX+1],tabu.tab[posicaoY][posicaoX+1].pos);
+				}
+			}
+			else if(posicaoX == 9) {
+				if (tabu.tab[posicaoY+1][posicaoX-1].tipo == "Inimigas" || tabu.tab[posicaoY+1][posicaoX-1].nome == 'p') {
+					tabu.tab[posicaoY+1][posicaoX-1] = new Vazio(tabu.tab[posicaoY+1][posicaoX-1].pos);
+					tabu.removerPeca(tabu.tab[posicaoY+1][posicaoX-1].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY+1][posicaoX-1],tabu.tab[posicaoY+1][posicaoX-1].pos);
+				}
+				if (tabu.tab[posicaoY+1][posicaoX].tipo == "Inimigas" || tabu.tab[posicaoY+1][posicaoX].nome == 'p') {
+					tabu.tab[posicaoY+1][posicaoX] = new Vazio(tabu.tab[posicaoY+1][posicaoX].pos);
+					tabu.removerPeca(tabu.tab[posicaoY+1][posicaoX].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY+1][posicaoX],tabu.tab[posicaoY+1][posicaoX].pos);
+				}
+				if (tabu.tab[posicaoY-1][posicaoX].tipo == "Inimigas" || tabu.tab[posicaoY-1][posicaoX].nome == 'p') {
+					tabu.tab[posicaoY-1][posicaoX] = new Vazio(tabu.tab[posicaoY-1][posicaoX].pos);
+					tabu.removerPeca(tabu.tab[posicaoY-1][posicaoX].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY-1][posicaoX],tabu.tab[posicaoY-1][posicaoX].pos);
+				}
+				if (tabu.tab[posicaoY-1][posicaoX-1].tipo == "Inimigas" || tabu.tab[posicaoY-1][posicaoX-1].nome == 'p') {
+					tabu.tab[posicaoY-1][posicaoX-1] = new Vazio(tabu.tab[posicaoY-1][posicaoX-1].pos);
+					tabu.removerPeca(tabu.tab[posicaoY-1][posicaoX-1].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY-1][posicaoX-1],tabu.tab[posicaoY-1][posicaoX-1].pos);
+				}
+				if (tabu.tab[posicaoY][posicaoX-1].tipo == "Inimigas" || tabu.tab[posicaoY][posicaoX-1].nome == 'p') {
+					tabu.tab[posicaoY][posicaoX-1] = new Vazio(tabu.tab[posicaoY][posicaoX-1].pos);
+					tabu.removerPeca(tabu.tab[posicaoY][posicaoX-1].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY][posicaoX-1],tabu.tab[posicaoY][posicaoX-1].pos);
 				}
 			}
 			else {
-				if (tabu.tab[posicaoX+1][posicaoY+1].tipo == "Inimigas" || tabu.tab[posicaoX+1][posicaoY+1].nome == 'p') {
-					tabu.tab[posicaoX+1][posicaoY+1] = new Vazio();
+				if (tabu.tab[posicaoY+1][posicaoX+1].tipo == "Inimigas" || tabu.tab[posicaoY+1][posicaoX+1].nome == 'p') {
+					tabu.tab[posicaoY+1][posicaoX+1] = new Vazio(tabu.tab[posicaoY+1][posicaoX+1].pos);
+					tabu.removerPeca(tabu.tab[posicaoY+1][posicaoX+1].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY+1][posicaoX+1],tabu.tab[posicaoY+1][posicaoX+1].pos);
 				}
-				if (tabu.tab[posicaoX+1][posicaoY].tipo == "Inimigas" || tabu.tab[posicaoX+1][posicaoY].nome == 'p') {
-					tabu.tab[posicaoX+1][posicaoY] = new Vazio();
+				if (tabu.tab[posicaoY+1][posicaoX].tipo == "Inimigas" || tabu.tab[posicaoY+1][posicaoX].nome == 'p') {
+					tabu.tab[posicaoY+1][posicaoX] = new Vazio(tabu.tab[posicaoY+1][posicaoX].pos);
+					tabu.removerPeca(tabu.tab[posicaoY+1][posicaoX].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY+1][posicaoX],tabu.tab[posicaoY+1][posicaoX].pos);
 				}
-				if (tabu.tab[posicaoX+1][posicaoY-1].tipo == "Inimigas" || tabu.tab[posicaoX+1][posicaoY-1].nome == 'p') {
-					tabu.tab[posicaoX+1][posicaoY-1] = new Vazio();
+				if (tabu.tab[posicaoY+1][posicaoX-1].tipo == "Inimigas" || tabu.tab[posicaoY+1][posicaoX-1].nome == 'p') {
+					tabu.tab[posicaoY+1][posicaoX-1] = new Vazio(tabu.tab[posicaoY+1][posicaoX-1].pos);
+					tabu.removerPeca(tabu.tab[posicaoY+1][posicaoX-1].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY+1][posicaoX-1],tabu.tab[posicaoY+1][posicaoX-1].pos);
 				}
-				if (tabu.tab[posicaoX-1][posicaoY].tipo == "Inimigas" || tabu.tab[posicaoX-1][posicaoY].nome == 'p') {
-					tabu.tab[posicaoX-1][posicaoY] = new Vazio();
+				if (tabu.tab[posicaoY-1][posicaoX].tipo == "Inimigas" || tabu.tab[posicaoY-1][posicaoX].nome == 'p') {
+					tabu.tab[posicaoY-1][posicaoX] = new Vazio(tabu.tab[posicaoY-1][posicaoX].pos);
+					tabu.removerPeca(tabu.tab[posicaoY-1][posicaoX].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY-1][posicaoX],tabu.tab[posicaoY-1][posicaoX].pos);
 				}
-				if (tabu.tab[posicaoX-1][posicaoY+1].tipo == "Inimigas" || tabu.tab[posicaoX-1][posicaoY+1].nome == 'p') {
-					tabu.tab[posicaoX-1][posicaoY+1] = new Vazio();
+				if (tabu.tab[posicaoY-1][posicaoX+1].tipo == "Inimigas" || tabu.tab[posicaoY-1][posicaoX+1].nome == 'p') {
+					tabu.tab[posicaoY-1][posicaoX+1] = new Vazio(tabu.tab[posicaoY-1][posicaoX+1].pos);
+					tabu.removerPeca(tabu.tab[posicaoY-1][posicaoX+1].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY-1][posicaoX+1],tabu.tab[posicaoY-1][posicaoX+1].pos);
 				}
-				if (tabu.tab[posicaoX-1][posicaoY-1].tipo == "Inimigas" || tabu.tab[posicaoX-1][posicaoY-1].nome == 'p') {
-					tabu.tab[posicaoX-1][posicaoY-1] = new Vazio();
+				if (tabu.tab[posicaoY-1][posicaoX-1].tipo == "Inimigas" || tabu.tab[posicaoY-1][posicaoX-1].nome == 'p') {
+					tabu.tab[posicaoY-1][posicaoX-1] = new Vazio(tabu.tab[posicaoY-1][posicaoX-1].pos);
+					tabu.removerPeca(tabu.tab[posicaoY-1][posicaoX-1].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY-1][posicaoX-1],tabu.tab[posicaoY-1][posicaoX-1].pos);
 				}
-				if (tabu.tab[posicaoX][posicaoY+1].tipo == "Inimigas" || tabu.tab[posicaoX][posicaoY+1].nome == 'p') {
-					tabu.tab[posicaoX][posicaoY+1] = new Vazio();
+				if (tabu.tab[posicaoY][posicaoX+1].tipo == "Inimigas" || tabu.tab[posicaoY][posicaoX+1].nome == 'p') {
+					tabu.tab[posicaoY][posicaoX+1] = new Vazio(tabu.tab[posicaoY][posicaoX+1].pos);
+					tabu.removerPeca(tabu.tab[posicaoY][posicaoX+1].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY][posicaoX+1],tabu.tab[posicaoY][posicaoX+1].pos);
 				}
-				if (tabu.tab[posicaoX][posicaoY-1].tipo == "Inimigas" || tabu.tab[posicaoX][posicaoY-1].nome == 'p') {
-					tabu.tab[posicaoX][posicaoY-1] = new Vazio();
+				if (tabu.tab[posicaoY][posicaoX-1].tipo == "Inimigas" || tabu.tab[posicaoY][posicaoX-1].nome == 'p') {
+					tabu.tab[posicaoY][posicaoX-1] = new Vazio(tabu.tab[posicaoY][posicaoX-1].pos);
+					tabu.removerPeca(tabu.tab[posicaoY][posicaoX-1].pos);
+					tabu.adicionaPeca(tabu.tab[posicaoY][posicaoX-1],tabu.tab[posicaoY][posicaoX-1].pos);
 				}
 			}
-			tabu.tab[posicaoX][posicaoY] = new Vazio();
-		}*/
+			tabu.tab[posicaoY][posicaoX] = new Vazio(tabu.tab[posicaoY][posicaoX].pos);
+			tabu.removerPeca(tabu.tab[posicaoY][posicaoX].pos);
+			tabu.adicionaPeca(tabu.tab[posicaoY][posicaoX],tabu.tab[posicaoY][posicaoX].pos);
+		}
 	}
 
 	

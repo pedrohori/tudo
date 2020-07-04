@@ -9,98 +9,85 @@ public class Monstro extends Inimigas{
 		vida = 1;
 		nome = 'm';
 		tipo = "Inimigas";
+		dano = 1;
 		this.tabu = tab;
 	}
 	
-	public void entrar(int l, int posicaoY) {
+
+	
+	public void andar(int posicaoX, int posicaoY, int x, int y, int l) {
+		
+		int v =tabu.tab[posicaoY+y][posicaoX+x].pos;
+		tabu.tab[posicaoY+y][posicaoX+x] = new Monstro(tabu,v);
+		tabu.tab[posicaoY+y][posicaoX+x].vida = tabu.tab[posicaoY][posicaoX].vida;
+		tabu.tab[posicaoY][posicaoX] = new Vazio(l);
+		
 		tabu.removerPeca(l);
-		tabu.tab[posicaoY][9] = new Monstro(tabu,l);
-		tabu.adicionaPeca(tabu.tab[posicaoY][9],l);
+		tabu.adicionaPeca(tabu.tab[posicaoY][posicaoX],l);
+		
+		tabu.removerPeca(v);
+		tabu.adicionaPeca(tabu.tab[posicaoY+y][posicaoX+x],v);
 	}
 	public void mover(int posicaoX, int posicaoY) {
-		/*if (posicaoY == 0) {
-			System.out.println("GAME OVER");
-			tabu.vitoria = false;
+		if(posicaoX==0) {
+			tabu.vitoria= false;
 		}
-		else if (tabu.tab[posicaoX][posicaoY-1].nome == '-') {
-			tabu.tab[posicaoX][posicaoY-1] = new Monstro(tabu);//falta a posicao
-			tabu.tab[posicaoX][posicaoY-1].vida = tabu.tab[posicaoX][posicaoY].vida;
-			tabu.tab[posicaoX][posicaoY] = new Vazio();//falta a posicao
+		else if(tabu.tab[posicaoY][posicaoX-1].nome == '-') {
+			andar(posicaoX,posicaoY,-1,0,tabu.tab[posicaoY][posicaoX].pos);
 		}
-		else{
+		else {
 			interagir(posicaoX, posicaoY);
 		}
 	}
 	
 	public void interagir(int posicaoX, int posicaoY) {
-		
-		if (tabu.tab[posicaoX][posicaoY-1].tipo == "Aliadas" || tabu.tab[posicaoX][posicaoY-1].nome == 'a') {
-			tabu.tab[posicaoX][posicaoY-1].vida = tabu.tab[posicaoX][posicaoY-1].vida -1;
-			if (tabu.tab[posicaoX][posicaoY-1].vida == 0) {
-				tabu.tab[posicaoX][posicaoY-1] = new Monstro(tabu);//falta a posicao
-				tabu.tab[posicaoX][posicaoY-1].vida = tabu.tab[posicaoX][posicaoY].vida;
-				tabu.tab[posicaoX][posicaoY] = new Vazio();//falta a posicao
+		super.interagir(posicaoX, posicaoY);
+		/*if (tabu.tab[posicaoY][posicaoX-1].tipo == "Aliadas" || tabu.tab[posicaoY][posicaoX-1].nome == 'a') {
+			if(tabu.tab[posicaoY][posicaoX-1].nome!='e') {
+				causarDano(posicaoX, posicaoY, -1, 0, dano);
 			}
+			
 		}
-		else if (tabu.tab[posicaoX][posicaoY-1].nome == 'p') {
-			if ((posicaoY-1) == 0) {
-				System.out.println("GAME OVER");
-				//recomeçar;
+		else if (tabu.tab[posicaoY][posicaoX-1].nome == 'p') {
+			if ((posicaoX-1) == 0) {
+				tabu.vitoria=false;
 			}
-			else if (tabu.tab[posicaoX][posicaoY-2].nome == '-') {
-				tabu.tab[posicaoX][posicaoY-2] = new Monstro(tabu);//falta a posicao
-				tabu.tab[posicaoX][posicaoY-2].vida = tabu.tab[posicaoX][posicaoY].vida;
-				tabu.tab[posicaoX][posicaoY] = new Vazio();//falta a posicao
+			else if (tabu.tab[posicaoY][posicaoX-2].nome == '-') {
+				andar(posicaoX, posicaoY, -2, 0,tabu.tab[posicaoY][posicaoX].pos);
 			}
-			else if (tabu.tab[posicaoX][posicaoY-2].tipo == "Aliadas" || tabu.tab[posicaoX][posicaoY-2].nome == 'a') {
-				tabu.tab[posicaoX][posicaoY-2].vida = tabu.tab[posicaoX][posicaoY-2].vida -1;
-				if (tabu.tab[posicaoX][posicaoY-2].vida == 0) {
-					tabu.tab[posicaoX][posicaoY-2] = new Monstro(tabu);//falta a posicao
-					tabu.tab[posicaoX][posicaoY-2].vida = tabu.tab[posicaoX][posicaoY].vida;
-					tabu.tab[posicaoX][posicaoY] = new Vazio();//falta a posicao
+			else if (tabu.tab[posicaoY][posicaoX-2].tipo == "Aliadas" || tabu.tab[posicaoY][posicaoX-2].nome == 'a') {
+				if(tabu.tab[posicaoY][posicaoX-2].nome!='e') {
+					causarDano(posicaoX, posicaoY, -2, 0, dano);
 				}
 			}
 		}
-		
-		if (tabu.tab[posicaoX][posicaoY-1].nome == 'l') {
+		else if (tabu.tab[posicaoY][posicaoX-1].nome == 'l') {
 			if (posicaoY == 0) {
-				if (tabu.tab[posicaoX+1][posicaoY].nome == '-') {
-					tabu.tab[posicaoX+1][posicaoY] = new Monstro(tabu);//falta a posicao
-					tabu.tab[posicaoX+1][posicaoY].vida = tabu.tab[posicaoX][posicaoY].vida;
-					tabu.tab[posicaoX][posicaoY] = new Vazio();//falta a posicao
+				if (tabu.tab[posicaoY+1][posicaoX].nome == '-') {
+					andar(posicaoX, posicaoY, 0, 1,tabu.tab[posicaoY][posicaoX].pos);
 				}
-				else if (tabu.tab[posicaoX+1][posicaoY].tipo == "Aliadas" || tabu.tab[posicaoX+1][posicaoY].nome == 'a') {
-					tabu.tab[posicaoX+1][posicaoY].vida = tabu.tab[posicaoX+1][posicaoY].vida -1;
-					if (tabu.tab[posicaoX+1][posicaoY].vida == 0) {
-						tabu.tab[posicaoX+1][posicaoY] = new Monstro(tabu);//falta a posicao
-						tabu.tab[posicaoX+1][posicaoY].vida = tabu.tab[posicaoX][posicaoY].vida;
-						tabu.tab[posicaoX][posicaoY] = new Vazio();//falta a posicao
+				else if (tabu.tab[posicaoY+1][posicaoX].tipo == "Aliadas" || tabu.tab[posicaoX+1][posicaoY].nome == 'a') {
+					if(tabu.tab[posicaoY+1][posicaoX].nome!='e') {
+						causarDano(posicaoX, posicaoY, 0, 1, dano);
 					}
 				}
 			}
 			else {
-				if (tabu.tab[posicaoX-1][posicaoY].nome == '-') {
-					tabu.tab[posicaoX-1][posicaoY] = new Monstro(tabu);//falta a posicao
-					tabu.tab[posicaoX-1][posicaoY].vida = tabu.tab[posicaoX][posicaoY].vida;
-					tabu.tab[posicaoX][posicaoY] = new Vazio();//falta a posicao
+				if (tabu.tab[posicaoY-1][posicaoX].nome == '-') {
+					andar(posicaoX, posicaoY, 0, -1,tabu.tab[posicaoY][posicaoX].pos);
 				}
-				else if (tabu.tab[posicaoX-1][posicaoY].tipo == "Aliadas" || tabu.tab[posicaoX-1][posicaoY].nome == 'a') {
-					tabu.tab[posicaoX-1][posicaoY].vida = tabu.tab[posicaoX-1][posicaoY].vida -1;
-					if (tabu.tab[posicaoX-1][posicaoY].vida == 0) {
-						tabu.tab[posicaoX-1][posicaoY] = new Monstro(tabu);//falta a posicao
-						tabu.tab[posicaoX-1][posicaoY].vida = tabu.tab[posicaoX][posicaoY].vida;
-						tabu.tab[posicaoX][posicaoY] = new Vazio();//falta a posicao
+				else if (tabu.tab[posicaoY-1][posicaoX].tipo == "Aliadas" || tabu.tab[posicaoY-1][posicaoX].nome == 'a') {
+					if(tabu.tab[posicaoY][posicaoX-1].nome!='e') {
+						causarDano(posicaoX, posicaoY, 0, -1, dano);
 					}
+					
 				}
 			}
 		}*/
-	}
-
-
-	@Override
-	public void interagir(int posicaoX, int posicaoY) {
-		// TODO Auto-generated method stub
 		
 	}
+
+
+
 
 }

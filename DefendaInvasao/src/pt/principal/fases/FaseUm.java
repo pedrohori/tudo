@@ -112,23 +112,15 @@ public class FaseUm {
 		          "Escolha um item", "Construir",
 		              JOptionPane.INFORMATION_MESSAGE, null,
 		                  itens, itens [0]); //
-		  boolean xCorreto = false;
+		 
 		  if(selectedValue!=null){
+			  String stringX   = JOptionPane.showInputDialog("Digite um valor para a coordenda x");
+			  String stringY   = JOptionPane.showInputDialog("Digite um valor para a coordenda y");
+			  Excessao e = new Excessao(f1);
+			  e.verificarPosicao(stringX,stringY);
 			
-			  String stringX,stringY;
-			  while(!xCorreto) {
-				  stringX   = JOptionPane.showInputDialog("Digite um valor para a coordenda x");
-				  stringY = JOptionPane.showInputDialog("Digite um valor para a coordenda y");
-				 try {
-					 f1.x = Integer.parseInt(stringX);
-					 f1.y = Integer.parseInt(stringY);
-					 xCorreto = true;
-					
-				 }catch(NumberFormatException erro) {
-					 
-				 }
 				 
-			  }
+			  
 			  if(selectedValue.equalsIgnoreCase("Fabrica - custo 50")) {
 				  if(f1.x<6 && f1.y<6) {
 					  construirFabrica(f1);

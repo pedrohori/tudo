@@ -12,13 +12,11 @@ public class Vazio extends Pecas {
 	}
 
 
-	public void mostrar() {
-		System.out.print(nome+" ");
-	}
+	
 
 	public void interagir(int posicaoX, int posicaoY) {}
 
-	protected void mover(int posicaoX, int posicaoY) {}
+	public void mover(int posicaoX, int posicaoY) {}
 
 
 	

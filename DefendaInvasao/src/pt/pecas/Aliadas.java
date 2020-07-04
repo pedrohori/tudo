@@ -7,9 +7,7 @@ public abstract class Aliadas extends Pecas {
 	public Aliadas(String s,int z) {
 		super(s,z);
 	}
-	public void mostrar(){
-        System.out.print(nome+" ");
-    }
+	
 	
 	public void mover(int posicaoX, int posicaoY) {
 		

@@ -79,23 +79,13 @@ public class FaseDois extends FaseUm{
 		          "Escolha um item", "Construir",
 		              JOptionPane.INFORMATION_MESSAGE, null,
 		                  itens, itens [0]); //
-		  boolean xCorreto = false;
+		 
 		  if(selectedValue!=null){
-			
-			  String stringX,stringY;
-			  while(!xCorreto) {
-				  stringX   = JOptionPane.showInputDialog("Digite um valor para a coordenda x");
-				  stringY = JOptionPane.showInputDialog("Digite um valor para a coordenda y");
-				 try {
-					 f2.x = Integer.parseInt(stringX);
-					 f2.y = Integer.parseInt(stringY);
-					 xCorreto = true;
-					
-				 }catch(NumberFormatException erro) {
-					 
-				 }
-				 
-			  }
+			  String stringX   = JOptionPane.showInputDialog("Digite um valor para a coordenda x");
+			  String stringY   = JOptionPane.showInputDialog("Digite um valor para a coordenda y");
+			  Excessao e = new Excessao(f2);
+			  e.verificarPosicao(stringX,stringY);
+			  
 			  if(selectedValue.equalsIgnoreCase("Fabrica - custo 50")) {
 				  if(f2.x<6 && f2.y<6) {
 					  construirFabrica(f2);

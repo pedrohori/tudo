@@ -22,12 +22,12 @@ public abstract class Pecas extends JLabel implements IPecas{
 		this.pos = z; 
 	}
 	
-	//protected abstract void define(char tipo);
+	
 	
 	
 
 	public abstract void interagir(int posicaoX, int posicaoY);
 
-	protected abstract void mover(int posicaoX, int posicaoY);
+	public abstract void mover(int posicaoX, int posicaoY);
 	
 }

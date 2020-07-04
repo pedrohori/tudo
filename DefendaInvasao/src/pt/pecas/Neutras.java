@@ -8,9 +8,7 @@ public class Neutras extends Pecas {
 		super(s,z);
 	}
 	
-	public void mostrar(){
-		System.out.print(nome+" ");
-	}
+	
 	public void mover(int posicaoX, int posicaoY) {
 		
 	}

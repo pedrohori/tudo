@@ -41,7 +41,7 @@ public abstract class Inimigas extends Pecas {
 				if (tabu.tab[posicaoY+1][posicaoX].nome == '-') {
 					andar(posicaoX, posicaoY, 0, 1,tabu.tab[posicaoY][posicaoX].pos);
 				}
-				else if (tabu.tab[posicaoY+1][posicaoX].tipo == "Aliadas" || tabu.tab[posicaoX+1][posicaoY].nome == 'a') {
+				else if (tabu.tab[posicaoY+1][posicaoX].tipo == "Aliadas" || tabu.tab[posicaoY+1][posicaoX].nome == 'a') {
 					if(tabu.tab[posicaoY+1][posicaoX].nome!='e') {
 						causarDano(posicaoX, posicaoY, 0, 1, dano);
 					}

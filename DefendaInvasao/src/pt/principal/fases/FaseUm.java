@@ -15,6 +15,7 @@ public class FaseUm {
 	protected Tabuleiro f1 =  new Tabuleiro("Fase 1");;
 	protected JButton next, constr,voltar;
 	protected Random rand = new Random();
+	protected Aliadas pe;
 	protected int novoMonstro,l;
 	protected int x,y;
 	public FaseUm(int arvores, int pedras, int lagos,String fase) {
@@ -152,12 +153,14 @@ public class FaseUm {
 		int z;
 		  if (f.tab[y][x].nome == '-' ) {
 				z= f.tab[y][x].pos;
-					if (f.rec.dinheiro >= Fabrica.custo) {
+				pe = new Fabrica(f,z);
+					if (f.rec.dinheiro >= pe.custo) {
 						f.removerPeca(z);
 						f.tab[y][x] = new Fabrica(f,z);
 						f.adicionaPeca(f.tab[y][x], z);
-						f.rec.alterarRecursos(0, Fabrica.custo);		
+						f.rec.alterarRecursos(0, pe.custo);		
 					}
+					
 					
 			}
 	}
@@ -169,11 +172,12 @@ public class FaseUm {
 	
 		if (f.tab[y][x].nome == '-') {
 			z= f.tab[y][x].pos;
-			if (f.rec.dinheiro >= Soldado.custo) {
+			pe = new Soldado(f,z);
+			if (f.rec.dinheiro >= pe.custo) {
 				f.removerPeca(z);
 				f.tab[y][x] = new Soldado(f,z);
 				f.adicionaPeca(f.tab[y][x], z);
-				f.rec.alterarRecursos(0, Soldado.custo);
+				f.rec.alterarRecursos(0, pe.custo);
 			}
 			
 		}

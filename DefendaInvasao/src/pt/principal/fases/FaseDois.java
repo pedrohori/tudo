@@ -15,7 +15,7 @@ public class FaseDois extends FaseUm{
 		super(arvores, pedras, lagos,fase);
 		f1.dispose();
 		f2.criarTab();
-		f2.fazerTab(arvores,pedras,lagos,500,40);
+		f2.fazerTab(arvores,pedras,lagos,500,50);//precisa ver a quantidade de recursos
 		f2.addFundo();
 		Icon cont = new ImageIcon("src//assets//continue.png");
 		next = new JButton(cont);
@@ -46,30 +46,13 @@ public class FaseDois extends FaseUm{
 
 		
 		
-	/*public void iniciar() {
-		next.addActionListener(new java.awt.event.ActionListener() {
-		       public void actionPerformed(java.awt.event.ActionEvent evt) {
-		    	   continuar();
-		    	
-					
-		        		
-		        }
-			 });
-			
-		constr.addActionListener(new java.awt.event.ActionListener() {
-		        public void actionPerformed(java.awt.event.ActionEvent evt) {
-		        	
-		        		construir();
-		        		
-		        }
-		    });
-		}*/
+	
 	public void continuar() {
 		if(f2.vitoria==true) {
 			f2.executar();
-			if(f2.rodada<f1.fim) {
+			if(f2.rodada<f2.fim) {
 				novoMonstro = rand.nextInt(6);
-				l = f1.tab[novoMonstro][9].pos;
+				l = f2.tab[novoMonstro][9].pos;
 				f2.entrarDois(l,novoMonstro);
 			}
 			else if(f2.procurarMonstro() == true) {
@@ -78,7 +61,8 @@ public class FaseDois extends FaseUm{
 			}
 			else {
 				f2.dispose();
-				//falta entre fases
+				EntreFaseTres fase = new EntreFaseTres();
+				fase.irFaseTres();
 			}
 			
 		}
@@ -113,23 +97,25 @@ public class FaseDois extends FaseUm{
 				 
 			  }
 			  if(selectedValue.equalsIgnoreCase("Fabrica - custo 50")) {
-				  if(f1.x<6 && f1.y<6) {
+				  if(f2.x<6 && f2.y<6) {
 					  construirFabrica(f2);
 				  }
 			  }
 			  else if(selectedValue.equalsIgnoreCase("Soldado - custo 100")) {
-				  if(f1.x<6 && f1.y<6) {
+				  if(f2.x<6 && f2.y<6) {
 					  construirSoldado(f2);
 				  }
 			  }
 			  else if(selectedValue.equalsIgnoreCase("Barreira - custo 150")) {
-				  if(f1.x<6 && f1.y<6) {
+				  if(f2.x<6 && f2.y<6) {
 					  construirBarreira(f2);
 				  }
 			  }
 			  else if(selectedValue.equalsIgnoreCase("Explosivo - custo 200")) {
-				  
+				  if(f2.y<6) {
 					  construirBomba(f2);
+				  }
+					  
 				  
 			  }
 		  }
@@ -142,11 +128,12 @@ public class FaseDois extends FaseUm{
 		int z;
 		if (f.tab[y][x].nome == '-') {
 			z= f.tab[y][x].pos;
-			if (f.rec.dinheiro >= Barreira.custo) {
+			pe = new Barreira(f,z);
+			if (f.rec.dinheiro >= pe.custo) {
 				f.removerPeca(z);
 				f.tab[y][x] = new Barreira(f,z);
 				f.adicionaPeca(f.tab[y][x], z);
-				f.rec.alterarRecursos(0, Soldado.custo);
+				f.rec.alterarRecursos(0, pe.custo);
 			}
 		}
 	}
@@ -157,11 +144,12 @@ public class FaseDois extends FaseUm{
 		int z;
 		if (f.tab[y][x].nome == '-') {
 			z= f.tab[y][x].pos;
-			if (f.rec.dinheiro >= Explosivo.custo) {
+			pe = new Explosivo(f,z);
+			if (f.rec.dinheiro >= pe.custo) {
 				f.removerPeca(z);
 				f.tab[y][x] = new Explosivo(f,z);
 				f.adicionaPeca(f.tab[y][x], z);
-				f.rec.alterarRecursos(0, Explosivo.custo);
+				f.rec.alterarRecursos(0, pe.custo);
 			}
 		}
 	}

@@ -18,7 +18,7 @@ public class Tabuleiro extends JFrame implements ITabuleiro {
 	private static final long serialVersionUID = 1L;
 	
 	private JPanel painelFundo, painelGrid, painelControle;
-	public JLabel label1;
+	public JLabel label1,label2;
 	public boolean vitoria;
 	public int rodada=0;
 	public int fim;
@@ -26,6 +26,7 @@ public class Tabuleiro extends JFrame implements ITabuleiro {
 	public Recursos rec;
 	public Pecas tab[][] = new Pecas [6][10];
 	public int x,y;
+	protected String fims;
 
 	public Tabuleiro(String s) {
 		super("Defenda-se da Invasão - "+ s);
@@ -69,10 +70,15 @@ public class Tabuleiro extends JFrame implements ITabuleiro {
 	
 	public void fazerTab(int arvores, int pedras, int lagos, int r, int tempo) {
 		this.rec = new Recursos(r,this);
+		
+		this.fim = tempo;
 		String s = Integer.toString(rec.dinheiro);
 		label1 = new JLabel("Recursos disponiveis: " + s);
+		String rod = Integer.toString(rodada);
+		fims = Integer.toString(fim);
+		label2 = new JLabel("Rodada "+rod+"/"+fims);
+		painelControle.add(label2);
 		painelControle.add(label1);
-		this.fim = tempo;
 		this.vitoria = true;
 		Random randx = new Random();
 		Random randy = new Random();
@@ -136,18 +142,21 @@ public class Tabuleiro extends JFrame implements ITabuleiro {
 	
 		if (rodada < fim) {
 			rodada = rodada +1;
-		
-			for (int i=0; i<6; i++){
-				for (int j=0; j<10; j++){
-					if (tab[i][j].nome != '-') {
-						if (tab[i][j].tipo == "Inimigas") {
-							tab[i][j].mover(j, i);
-						}
-						
+			String rod = Integer.toString(rodada);
+			label2.setText("Rodada "+rod+"/"+fims);
+			label2.updateUI();
+		}
+		for (int i=0; i<6; i++){
+			for (int j=0; j<10; j++){
+				if (tab[i][j].nome != '-') {
+					if (tab[i][j].tipo == "Inimigas") {
+						tab[i][j].mover(j, i);
 					}
+						
 				}
 			}
 		}
+		
 		for (int i=0; i<6; i++){
 			for (int j=0; j<10; j++){
 				if (tab[i][j].nome != '-') {

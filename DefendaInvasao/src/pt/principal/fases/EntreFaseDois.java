@@ -53,7 +53,7 @@ public class EntreFaseDois extends JFrame {
 		fase2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
             	
-            	FaseDois f2 = new FaseDois(3,3,3,"Fase 2");
+            	FaseDois f2 = new FaseDois(3,2,1,"Fase 2");
         		f2.iniciar();
         		dispose();
             		

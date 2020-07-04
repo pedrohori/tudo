@@ -27,6 +27,12 @@ public class Fundo extends JPanel {
 		else if(s.equalsIgnoreCase("fase3")) {
 			ref = new ImageIcon("src\\assets\\vafase3.png");
 		}
+		else if(s.equalsIgnoreCase("venceu")) {
+			ref = new ImageIcon("src\\assets\\venceu.png");
+		}
+		else if(s.equalsIgnoreCase("instrucao")) {
+			ref = new ImageIcon("src\\assets\\instrucoes.png");
+		}
 	
 		fundo = ref.getImage();
 	}

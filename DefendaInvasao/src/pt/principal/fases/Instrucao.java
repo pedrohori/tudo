@@ -11,18 +11,20 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import pt.principal.Fundo;
+import pt.principal.Menu;
 
-public class EntreFaseTres extends JFrame{
-	private static final long serialVersionUID = -7509897561508610950L;
+public class Instrucao extends JFrame{
+	private static final long serialVersionUID = 5243112469295145682L;
 	private JPanel centro;
-	public JButton fase3;
-	public EntreFaseTres() {
+	public JButton menu;
+	public Instrucao() {
 		
-		super("Defenda-se da Invasão");
+		super("Defenda-se da Invasão - Instruções");
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		janelaVisual();
 	}
+	
 	public void janelaVisual() {
 		setSize(1010,740);
 		setResizable(false);
@@ -30,37 +32,38 @@ public class EntreFaseTres extends JFrame{
 		painelPrincipal.setLayout(new BorderLayout());
 		
 	
-		centro = new Fundo("fase3");
+		centro = new Fundo("instrucao");
 		centro.setLayout(null);
 		
 		
 		
 		painelPrincipal.add(centro,BorderLayout.CENTER);
 		
-		Icon bot = new ImageIcon("src//assets//bfase3.png");
-		fase3 = new JButton(bot);
-		fase3.setBounds(425, 500, 150, 75);
-		adicionaComando(fase3);
+		Icon bot = new ImageIcon("src//assets//menub.png");
+		menu = new JButton(bot);
+		menu.setBounds(425, 500, 150, 75);
+		adicionaComando(menu);
 		
 		
 		
 		setVisible(true);
 			
 	}
+	
+	public void irMenu() {
+		menu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	Menu menup = new Menu();
+        		menup.iniciarMenu();
+            	dispose();
+            		
+            }
+        });
+	}
+	
 	public void adicionaComando (JButton comando) {
 		centro.add(comando);
 		SwingUtilities.updateComponentTreeUI(this);
 		
-	}
-	public void irFaseTres() {
-		fase3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-            	
-            	FaseTres f3 = new FaseTres(4,3,1,"Fase 3");
-        		f3.iniciar();
-        		dispose();
-            		
-            }
-        });
 	}
 }

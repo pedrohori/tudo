@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 import pt.principal.*;
 import pt.pecas.*;
 
-public class FaseUm {
+public class FaseUm implements IFases{
 	
 	protected Tabuleiro f1 =  new Tabuleiro("Fase 1");;
 	protected JButton next, constr,voltar;
@@ -116,7 +116,7 @@ public class FaseUm {
 		  if(selectedValue!=null){
 			  String stringX   = JOptionPane.showInputDialog("Digite um valor para a coordenda x");
 			  String stringY   = JOptionPane.showInputDialog("Digite um valor para a coordenda y");
-			  Excessao e = new Excessao(f1);
+			  Excecao e = new Excecao(f1);
 			  e.verificarPosicao(stringX,stringY);
 			
 				 

@@ -10,10 +10,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import pt.principal.Fundo;
-import pt.principal.Menu;
+import pt.principal.*;
 
-public class EntreFaseDois extends JFrame {
+public class EntreFaseDois extends JFrame implements IJanela{
 	private static final long serialVersionUID = 6477236801859675355L;
 	private JPanel centro;
 	public JButton fase2;

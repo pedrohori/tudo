@@ -10,10 +10,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import pt.principal.Fundo;
-import pt.principal.Menu;
+import pt.principal.*;
 
-public class VoceVenceu extends JFrame{
+public class VoceVenceu extends JFrame implements IJanela{
 
 	private static final long serialVersionUID = -1198451553242123550L;
 	

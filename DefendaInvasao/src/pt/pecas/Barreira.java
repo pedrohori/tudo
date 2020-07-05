@@ -5,7 +5,7 @@ public class Barreira extends Aliadas{
 	private static final long serialVersionUID = 1L;
 	public Barreira (Tabuleiro tab,int z) {
 		super("src\\assets\\barreira.png",z);
-		custo = 150;
+		custo = 70;
 		vida = 5;
 		nome = 'b';
 		tipo = "Aliadas";

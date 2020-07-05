@@ -10,10 +10,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import pt.principal.Fundo;
-import pt.principal.Menu;
+import pt.principal.*;
 
-public class FimJogo extends JFrame{
+public class FimJogo extends JFrame implements IJanela{
 	
 	private static final long serialVersionUID = -162756014399604415L;
 	private JPanel centro;

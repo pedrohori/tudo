@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 public class Tabuleiro extends JFrame implements ITabuleiro {
-//precisa terminar;
+
 	private static final long serialVersionUID = 1L;
 	
 	private JPanel painelFundo, painelGrid, painelControle;
@@ -119,7 +119,7 @@ public class Tabuleiro extends JFrame implements ITabuleiro {
 	public void addFundo() {
 		for(int i=0; i<6;i++) {
 			for(int j=0; j<10;j++) {
-				//System.out.println(tab[i][j].x);
+				
 				adicionaPeca(tab[i][j],tab[i][j].pos);
 			}
 		}
@@ -180,11 +180,7 @@ public class Tabuleiro extends JFrame implements ITabuleiro {
 		}
 		return(monstro);
 	}
-	/*public void adicionaPeca(Pecas img) {
-		painelGrid.add(img);
-		SwingUtilities.updateComponentTreeUI(this);
-	    
-	}*/
+	
 	public void adicionaPeca(Pecas img, int posicao) {
 		painelGrid.add(img,posicao);
 		SwingUtilities.updateComponentTreeUI(this);

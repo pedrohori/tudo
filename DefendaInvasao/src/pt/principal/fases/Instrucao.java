@@ -10,10 +10,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import pt.principal.Fundo;
-import pt.principal.Menu;
+import pt.principal.*;
 
-public class Instrucao extends JFrame{
+public class Instrucao extends JFrame implements IJanela{
 	private static final long serialVersionUID = 5243112469295145682L;
 	private JPanel centro;
 	public JButton menu;

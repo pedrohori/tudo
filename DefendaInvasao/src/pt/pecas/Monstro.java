@@ -6,7 +6,7 @@ public class Monstro extends Inimigas{
 	
 	public Monstro(Tabuleiro tab,int z) {
 		super("src\\assets\\monstro1.png",z);
-		vida = 1;
+		vida = 2;
 		nome = 'm';
 		tipo = "Inimigas";
 		dano = 1;

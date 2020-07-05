@@ -12,7 +12,7 @@ import javax.swing.SwingUtilities;
 import pt.principal.fases.*;
 
 
-public class Menu extends JFrame{
+public class Menu extends JFrame implements IJanela{
 	
 	private static final long serialVersionUID = 1L;
 	private JPanel centro;

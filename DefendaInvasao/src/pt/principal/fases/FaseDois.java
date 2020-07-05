@@ -9,7 +9,7 @@ import pt.pecas.*;
 import pt.principal.*;
 
 
-public class FaseDois extends FaseUm{
+public class FaseDois extends FaseUm implements IFases{
 	protected TabuleiroDois f2 =  new TabuleiroDois("Fase 2");
 	public FaseDois(int arvores, int pedras, int lagos,String fase) {
 		super(arvores, pedras, lagos,fase);
@@ -74,7 +74,7 @@ public class FaseDois extends FaseUm{
 		}
 	}
 	public void construir() {
-		String[] itens = {"Fabrica - custo 50","Soldado - custo 100","Barreira - custo 150","Explosivo - custo 200" };
+		String[] itens = {"Fabrica - custo 50","Soldado - custo 100","Barreira - custo 70","Explosivo - custo 200" };
 		  String selectedValue = (String) JOptionPane.showInputDialog(null,
 		          "Escolha um item", "Construir",
 		              JOptionPane.INFORMATION_MESSAGE, null,
@@ -83,7 +83,7 @@ public class FaseDois extends FaseUm{
 		  if(selectedValue!=null){
 			  String stringX   = JOptionPane.showInputDialog("Digite um valor para a coordenda x");
 			  String stringY   = JOptionPane.showInputDialog("Digite um valor para a coordenda y");
-			  Excessao e = new Excessao(f2);
+			  Excecao e = new Excecao(f2);
 			  e.verificarPosicao(stringX,stringY);
 			  
 			  if(selectedValue.equalsIgnoreCase("Fabrica - custo 50")) {
@@ -96,7 +96,7 @@ public class FaseDois extends FaseUm{
 					  construirSoldado(f2);
 				  }
 			  }
-			  else if(selectedValue.equalsIgnoreCase("Barreira - custo 150")) {
+			  else if(selectedValue.equalsIgnoreCase("Barreira - custo 70")) {
 				  if(f2.x<6 && f2.y<6) {
 					  construirBarreira(f2);
 				  }

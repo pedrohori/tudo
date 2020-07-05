@@ -13,7 +13,14 @@ public class App {
 		
 		Menu menu = new Menu();
 		menu.iniciarMenu();
+		/* agradecimento a todos 
+		 * os usuarios do site Gratis png que disponibilazaram no site as imagens das peças utilizadas
+		 */
 		
+		/*as imagens de cada celula, seja ela ocupada ou não e dos fundos das telas e dos botões 
+		 * foram feitas no photoshop
+		 * 
+		 */
 	}
 	
 
